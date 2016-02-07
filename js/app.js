@@ -69,14 +69,14 @@ function init() {
                      container.append(entryTemplate(entry));
                  });
 
-                 if (cb) {
-                     cb();
+                 if (typeof cb === 'function') {
+                    cb();
                  }
                },
        error: function (result, status, err){
                  //run only the callback without attempting to parse result due to error
-                 if (cb) {
-                     cb();
+                 if (typeof cb === 'function') {
+                    cb();
                  }
                },
        dataType: "json"
