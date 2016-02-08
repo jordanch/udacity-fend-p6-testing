@@ -32,8 +32,8 @@ $(function() {
         /* This test checks the allFeeds object to see whether a url property exists
          * on each object and whether the url is longer than 0 characters
          */
-        it('has URL', function(){
-            for (var i = 0; i < length; i++){
+        it('has URL', function() {
+            for (var i = 0; i < length; i++) {
                 expect(allFeeds[i].url).toBeDefined();
                 expect(allFeeds[i].url.length).not.toBe(0);
             }
@@ -43,8 +43,8 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-        it('has name', function(){
-            for (var i = 0; i < length; i++){
+        it('has name', function() {
+            for (var i = 0; i < length; i++) {
                 expect(allFeeds[i].name).toBeDefined();
                 expect(allFeeds[i].name.length).not.toBe(0);
             }
@@ -52,13 +52,13 @@ $(function() {
     });
 
     // Test suite for The Menu
-    describe('The menu', function(){
+    describe('The menu', function() {
 
         /*
          * This spec checks whether the sliding menu is hidden by default.
          */
 
-        it('is hidden by default', function(){
+        it('is hidden by default', function() {
             expect($('body').hasClass('menu-hidden')).toBe(true);
         });
 
@@ -66,7 +66,7 @@ $(function() {
          * This test checks whether the menu's visibility can be
          * toggled appropriately
          */
-        it('toggles visibility when clicked', function(){
+        it('toggles visibility when clicked', function() {
             $('body').toggleClass('menu-hidden');
             expect($('body').hasClass('menu-hidden')).toBe(false);
             $('body').toggleClass('menu-hidden');
@@ -76,7 +76,7 @@ $(function() {
     });
 
     // Test Suite for Initial Entries
-    describe('Initial Entries', function(){
+    describe('Initial Entries', function() {
 
         beforeEach(function(done){
             loadFeed(0, done);
@@ -87,35 +87,36 @@ $(function() {
          * a single .entry element within the .feed container.
          */
 
-        it('has at least one entry', function(done){
+        it('has at least one entry', function(done) {
             expect($('.feed').find('.entry').length).toBeGreaterThan(0);
             done();
-        })
+        });
     });
 
-    // // Test Suite, "New Feed Selection"
-    // describe('New Feed Selection', function(){
+    // Test Suite, "New Feed Selection"
+    describe('New Feed Selection', function() {
+        // application loads feed 0 onload as implemented in application logic
+        var currentHeading = $('.header-title');
+        var currentEntries = $('.feed').find('.entry').children('h2');
 
-    //     beforeEach(function(done){
-    //         // application loads feed 0 onload as implemented in application logic
-    //         var currentHeading = $('.header-title');
-    //         var currentEntries = $('.feed').find('.entry').children('h2');
-    //         //var lengthA = currentEntries.length;
-    //         loadFeed(1, done);
-    //     });
-    //      This test ensures that when a new feed is loaded
-    //      * by the loadFeed function that the content actually changes.
+        beforeEach(function(done){
+            loadFeed(1, done);
+        });
+        /* This test ensures that when a new feed is loaded
+         * by the loadFeed function that the content actually changes.
+         */
 
-    //     it('changes content when new feed is selected', function(done){
-    //         var changedHeading = $('.header-title');
-    //         var changedEntries = $('.feed').find('.entry').children('h2');
-    //         var length = changedEntries.length;
+        it('changes content when new feed is selected', function(done) {
+            var changedHeading = $('.header-title');
+            var changedEntries = $('.feed').find('.entry').children('h2');
+            var length = changedEntries.length;
 
-    //         expect(currentHeading === changedHeading).toBeFalsy();
-    //             for (var i = 0; i < length; i++){
-    //                 expect(changedEntries[i] === currentEntries[i]).toBeFalsy();
-    //             }
-    //     });
-    // });
+            expect(currentHeading === changedHeading).toBeFalsy();
+                for (var i = 0; i < length; i++){
+                    expect(changedEntries[i] === currentEntries[i]).toBeFalsy();
+                }
+            done();
+        });
+    });
 
 }());
