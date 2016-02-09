@@ -113,11 +113,11 @@ $(function() {
          */
 
         it('changes content when new feed is selected', function() {
-            var changedHeading = $('.header-title');
-            var changedEntries = $('.feed .entry h2');
+            var changedHeading = $('.header-title').text();
+            var changedEntries = $('.feed .entry h2').text();
 
-            expect(changedHeading).not.toBe(currentHeading);
-            expect(changedEntries).not.toBe(currentEntries);
+            expect(changedHeading).not.toEqual(currentHeading);
+            expect(changedEntries).not.toEqual(currentEntries);
         });
     });
 
