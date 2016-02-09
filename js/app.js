@@ -70,6 +70,7 @@ function init() {
                  });
 
                  if (typeof cb === 'function') {
+                    console.log('calling callback');
                     cb();
                  }
                },

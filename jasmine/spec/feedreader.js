@@ -87,35 +87,39 @@ $(function() {
          * a single .entry element within the .feed container.
          */
 
-        it('has at least one entry', function(done) {
-            expect($('.feed').find('.entry').length).toBeGreaterThan(0);
-            done();
+        it('has at least one entry', function() {
+            expect($('.feed .entry').length).toBeGreaterThan(0);
         });
     });
 
     // Test Suite, "New Feed Selection"
     describe('New Feed Selection', function() {
-        // application loads feed 0 onload as implemented in application logic
-        var currentHeading = $('.header-title');
-        var currentEntries = $('.feed').find('.entry').children('h2');
 
-        beforeEach(function(done){
-            loadFeed(1, done);
+        var currentHeading;
+        var currentEntries;
+        var cb = function(doneF) {
+            loadFeed(1, doneF);
+        };
+
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                currentHeading = $('.header-title');
+                console.dir(currentHeading);
+                currentEntries = $('.feed .entry h2');
+                console.log(currentEntries);
+                cb(done);
+            });
         });
         /* This test ensures that when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          */
 
-        it('changes content when new feed is selected', function(done) {
+        it('changes content when new feed is selected', function() {
             var changedHeading = $('.header-title');
-            var changedEntries = $('.feed').find('.entry').children('h2');
-            var length = changedEntries.length;
+            var changedEntries = $('.feed .entry h2');
 
-            expect(currentHeading === changedHeading).toBeFalsy();
-                for (var i = 0; i < length; i++){
-                    expect(changedEntries[i] === currentEntries[i]).toBeFalsy();
-                }
-            done();
+            expect(changedHeading).not.toBe(currentHeading);
+            expect(changedEntries).not.toBe(currentEntries);
         });
     });
 
