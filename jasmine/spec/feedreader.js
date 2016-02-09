@@ -104,9 +104,7 @@ $(function() {
         beforeEach(function(done) {
             loadFeed(0, function() {
                 currentHeading = $('.header-title');
-                console.dir(currentHeading);
                 currentEntries = $('.feed .entry h2');
-                console.log(currentEntries);
                 cb(done);
             });
         });
