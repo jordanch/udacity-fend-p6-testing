@@ -103,8 +103,8 @@ $(function() {
 
         beforeEach(function(done) {
             loadFeed(0, function() {
-                currentHeading = $('.header-title');
-                currentEntries = $('.feed .entry h2');
+                currentHeading = $('.header-title').text();
+                currentEntries = $('.feed .entry h2').text();
                 cb(done);
             });
         });
