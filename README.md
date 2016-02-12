@@ -1,5 +1,9 @@
 Udacity Project 6 - JavaScript testing using Jasmine
 
+About:
+
+Jasmine is a JavaScript testing library. The project revolved around creating Test Suites and Test Specs to carry out "unit tests" - tests on small pieces of the application's logic. This was the first time I had been exposed to a testing framework and enjoyed learning about Jasmine, specifically asynchronous function testing.
+
 Q: How can I run the application?
 
 A:
